@@ -125,6 +125,6 @@ Edit `src/app/data/portfolio.data.ts`:
 - `linkedin` and `github` URLs (khali hain, isliye site par hidden hain).
 - Project `github` / `demo` links jahan applicable ho (project links sirf approved projects ke daalo).
 - `formEndpoint`: https://formspree.io par free form banao aur URL paste karo. Khali rakhoge to form visitor ka email app khol dega.
-- Resume: site par `public/Bhupendra_Yadav_Resume.pdf` serve hota hai (confidential naam hataya hua public version). Update karni ho to isi naam se PDF replace karo. Original NDA-wali resume repo mein kabhi commit mat karna.
+- Resume: abhi site par resume download nahi hai. Wapas lana ho to sanitized PDF `public/` mein daalo aur navbar mein link add karo.
 - Projects confidentiality: `portfolio.data.ts` mein sirf generic titles aur high-level impact likho. Client ya internal tool ke naam, real metrics, schemas, internal URLs aur source code kabhi nahi.
 - GitHub/demo links sirf personal ya open-source projects ke daalo.

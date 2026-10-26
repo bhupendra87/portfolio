@@ -35,7 +35,6 @@ export const PROFILE = {
   email: 'yadavbhupendra787@gmail.com',
   phone: '+91-9718891330',
   location: 'Amroha, Uttar Pradesh, India',
-  resumeFile: 'Bhupendra_Yadav_Resume.pdf',
   // Add your real profile URLs below. Empty values are hidden.
   linkedin: '',
   github: '',
