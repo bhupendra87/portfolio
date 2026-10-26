@@ -8,6 +8,7 @@ import { PROJECTS } from '../data/portfolio.data';
       <div class="wrap">
         <h2 class="section__title">Projects I have shipped</h2>
         <p class="section__lead">Enterprise platforms, data pipelines and APIs. Filter by where I built them.</p>
+        <p class="note">Titles and details are kept general to respect client confidentiality. No client data or source code is shown.</p>
 
         <div class="filters" role="group" aria-label="Filter projects by company">
           @for (f of filters; track f) {
@@ -24,6 +25,9 @@ import { PROJECTS } from '../data/portfolio.data';
                 <p class="card__meta">{{ pr.company }}, {{ pr.year }}</p>
               </header>
               <p class="card__sum">{{ pr.summary }}</p>
+              <ul class="card__pts">
+                @for (h of pr.highlights; track h) { <li>{{ h }}</li> }
+              </ul>
               <ul class="card__tags" aria-label="Tech stack">
                 @for (t of pr.stack; track t) { <li class="tag">{{ t }}</li> }
               </ul>
@@ -51,7 +55,11 @@ import { PROJECTS } from '../data/portfolio.data';
     .card--feat h3 { font-size: 1.7rem; }
     h3 { font-size: 1.3rem; }
     .card__meta { color: var(--muted); font-size: .95rem; margin-top: 4px; }
-    .card__sum { color: var(--ink); flex: 1; }
+    .note { margin-top: 12px; color: var(--muted); font-size: .95rem; max-width: 62ch; }
+    .card__sum { color: var(--ink); }
+    .card__pts { display: grid; gap: 6px; color: var(--muted); font-size: .98rem; flex: 1; list-style: none; margin: 0; padding: 0; }
+    .card__pts li { position: relative; padding-left: 18px; }
+    .card__pts li::before { content: ''; position: absolute; left: 0; top: .72em; width: 8px; height: 2px; background: var(--accent); }
     .card__tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
     .card__links { display: flex; gap: 16px; font-weight: 600; }
     .card__links a { color: var(--accent); }
