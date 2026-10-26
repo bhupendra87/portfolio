@@ -1,5 +1,5 @@
 import { Component, computed, signal } from '@angular/core';
-import { PROJECTS } from '../data/portfolio.data';
+import { EXPERIENCE, PROJECTS } from '../data/portfolio.data';
 
 @Component({
   selector: 'app-projects',
@@ -7,6 +7,12 @@ import { PROJECTS } from '../data/portfolio.data';
     <section class="section" id="projects">
       <div class="wrap">
         <h2 class="section__title">Projects I have shipped</h2>
+        @if (!hasProjects) {
+          <p class="section__lead">Project details are being updated. For now, these are the organisations I have built software for.</p>
+          <ul class="orgs">
+            @for (c of companies; track c) { <li class="org">{{ c }}</li> }
+          </ul>
+        } @else {
         <p class="section__lead">Enterprise platforms, data pipelines and APIs. Filter by where I built them.</p>
         <p class="note">Titles and details are kept general to respect client confidentiality. No client data or source code is shown.</p>
 
@@ -40,10 +46,13 @@ import { PROJECTS } from '../data/portfolio.data';
             </article>
           }
         </div>
+        }
       </div>
     </section>
   `,
   styles: `
+    .orgs { display: flex; flex-wrap: wrap; gap: 14px; margin: 32px 0 0; padding: 0; list-style: none; }
+    .org { padding: 18px 28px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); font: 700 1.25rem var(--font-display); letter-spacing: -.01em; }
     .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
     .chip { font: 500 .95rem var(--font-body); padding: 8px 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; transition: background-color .15s, color .15s, border-color .15s; }
     .chip:hover { border-color: var(--accent); }
@@ -68,6 +77,8 @@ import { PROJECTS } from '../data/portfolio.data';
   `,
 })
 export class ProjectsSection {
+  readonly hasProjects = PROJECTS.length > 0;
+  readonly companies = EXPERIENCE.map((e) => e.company.replace(' Private Limited', ''));
   readonly filters = ['All', 'Teleperformance', 'Virtual Employee', 'Softdew Tech'];
   readonly active = signal('All');
   readonly shown = computed(() => {
