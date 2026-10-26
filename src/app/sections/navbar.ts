@@ -16,13 +16,16 @@ import { ThemeService } from '../core/theme.service';
         </nav>
 
         <div class="nav__actions">
-          <button class="icon-btn" type="button" (click)="theme.toggle()"
+          <button class="switch" type="button" role="switch" (click)="theme.toggle()"
+            [class.switch--dark]="theme.theme() === 'dark'"
+            [attr.aria-checked]="theme.theme() === 'dark'"
             [attr.aria-label]="theme.theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
-            @if (theme.theme() === 'dark') {
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-            } @else {
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-            }
+            <span class="switch__stars" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="switch__cloud" aria-hidden="true"></span>
+            <span class="switch__knob" aria-hidden="true">
+              <svg class="sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4" fill="currentColor"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg>
+              <svg class="moon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>
+            </span>
           </button>
           <a class="btn btn--primary btn--sm nav__resume" [href]="p.resumeFile" download>Download resume</a>
           <button class="icon-btn nav__burger" type="button" (click)="open.set(!open())"
@@ -56,6 +59,37 @@ import { ThemeService } from '../core/theme.service';
     }
     .icon-btn:hover { border-color: var(--accent); transform: rotate(12deg); }
     .nav__burger { display: none; }
+
+    .switch {
+      position: relative; width: 68px; height: 36px; padding: 0; cursor: pointer; overflow: hidden;
+      border-radius: 999px; border: 2px solid color-mix(in srgb, var(--ink) 14%, transparent);
+      background: linear-gradient(180deg, #7cc8ff 0%, #ffe3a3 100%);
+      transition: background .4s ease, border-color .3s ease;
+    }
+    .switch--dark { background: linear-gradient(180deg, #1b1f4a 0%, #4b2a7a 100%); }
+    .switch__knob {
+      position: absolute; top: 3px; left: 3px; width: 26px; height: 26px; border-radius: 50%;
+      display: grid; place-items: center; color: #fff;
+      background: linear-gradient(135deg, #ffd24d, #ff9a3c);
+      box-shadow: 0 2px 6px rgb(0 0 0 / .3);
+      transition: transform .4s cubic-bezier(.5, 1.6, .5, 1), background .4s ease;
+    }
+    .switch--dark .switch__knob { transform: translateX(32px); background: linear-gradient(135deg, #e9edff, #b9c4ff); color: #3b3f8f; }
+    .sun, .moon { position: absolute; transition: opacity .25s, transform .4s; }
+    .sun { color: #fff; }
+    .moon { opacity: 0; transform: rotate(-60deg) scale(.6); }
+    .switch--dark .sun { opacity: 0; transform: rotate(60deg) scale(.6); }
+    .switch--dark .moon { opacity: 1; transform: none; }
+    .switch__cloud { position: absolute; right: 9px; bottom: 5px; width: 20px; height: 8px; border-radius: 8px; background: #fff; opacity: .9; transition: opacity .3s, transform .4s; }
+    .switch__cloud::before { content: ''; position: absolute; left: 4px; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: #fff; }
+    .switch--dark .switch__cloud { opacity: 0; transform: translateY(8px); }
+    .switch__stars { position: absolute; inset: 0; opacity: 0; transition: opacity .4s; }
+    .switch--dark .switch__stars { opacity: 1; }
+    .switch__stars i { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: #fff; }
+    .switch__stars i:nth-child(1) { left: 12px; top: 9px; }
+    .switch__stars i:nth-child(2) { left: 22px; top: 21px; width: 2px; height: 2px; }
+    .switch__stars i:nth-child(3) { left: 31px; top: 11px; width: 2px; height: 2px; }
+    .switch:hover { border-color: var(--accent); }
 
     @media (max-width: 860px) {
       .nav__burger { display: grid; }

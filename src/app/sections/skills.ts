@@ -24,11 +24,16 @@ import { SKILLS } from '../data/portfolio.data';
   styles: `
     .skills { background: var(--surface); border-block: 1px solid var(--line); }
     .sk { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px 48px; margin-top: 44px; }
-    .sk__group { border-top: 2px solid var(--ink); padding-top: 16px; }
+    .sk__group { --c: var(--accent); border-top: 3px solid var(--c); padding-top: 16px; }
+    .sk__group:nth-child(6n+2) { --c: var(--teal); }
+    .sk__group:nth-child(6n+3) { --c: var(--coral); }
+    .sk__group:nth-child(6n+4) { --c: var(--signal); }
+    .sk__group:nth-child(6n+5) { --c: var(--violet); }
+    .sk__group:nth-child(6n+6) { --c: var(--teal); }
     h3 { font-size: 1.25rem; margin-bottom: 14px; }
     ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
     .tag { background: var(--bg); border: 1px solid var(--line); padding: 5px 13px; font-size: .95rem; transition: border-color .15s, color .15s; }
-    .tag:hover { border-color: var(--accent); color: var(--accent); }
+    .tag:hover { border-color: var(--c); color: var(--c); }
   `,
 })
 export class SkillsSection {

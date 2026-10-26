@@ -33,16 +33,19 @@ import { EXPERIENCE } from '../data/portfolio.data';
     .tl::before { content: ''; position: absolute; top: 8px; bottom: 8px; left: 200px; width: 2px; background: var(--line); }
     .tl__item { display: grid; grid-template-columns: 200px 1fr; gap: 0; position: relative; padding-bottom: 36px; }
     .tl__item:last-child { padding-bottom: 0; }
+    .tl__item { --c: var(--accent); }
+    .tl__item:nth-child(2) { --c: var(--teal); }
+    .tl__item:nth-child(3) { --c: var(--coral); }
     .tl__when { padding-top: 6px; padding-right: 32px; text-align: right; font: 600 .98rem var(--font-body); color: var(--muted); }
     .tl__card { margin-left: 32px; position: relative; padding: 24px 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); transition: border-color .2s, transform .2s; }
-    .tl__card:hover { border-color: var(--accent); transform: translateX(4px); }
-    .tl__card::before { content: ''; position: absolute; left: -39px; top: 14px; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 3px solid var(--surface); box-shadow: 0 0 0 1px var(--accent); }
+    .tl__card:hover { border-color: var(--c); transform: translateX(4px); }
+    .tl__card::before { content: ''; position: absolute; left: -39px; top: 14px; width: 14px; height: 14px; border-radius: 50%; background: var(--c); border: 3px solid var(--surface); box-shadow: 0 0 0 1px var(--c); }
     h3 { font-size: 1.5rem; }
-    .tl__co { color: var(--accent); font-weight: 600; margin-top: 4px; }
+    .tl__co { color: var(--c); font-weight: 600; margin-top: 4px; }
     .tl__hi { margin-top: 14px; font-weight: 500; }
     .tl__card ul { margin-top: 12px; display: grid; gap: 8px; color: var(--muted); }
     .tl__card li { position: relative; padding-left: 20px; }
-    .tl__card li::before { content: ''; position: absolute; left: 0; top: .7em; width: 8px; height: 2px; background: var(--accent); }
+    .tl__card li::before { content: ''; position: absolute; left: 0; top: .7em; width: 8px; height: 2px; background: var(--c); }
 
     @media (max-width: 760px) {
       .tl::before { left: 6px; }

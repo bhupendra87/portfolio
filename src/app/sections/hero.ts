@@ -72,14 +72,16 @@ import { PROFILE } from '../data/portfolio.data';
     .node--mid rect { stroke: var(--accent); stroke-width: 2; }
     .node text { fill: var(--ink); font: 600 17px var(--font-body); }
     .node .node__meta { fill: var(--muted); font-weight: 400; font-size: 14px; }
-    .cols rect { fill: var(--surface-2); stroke: none; }
+    .cols rect { stroke: none; fill: var(--teal); opacity: .75; }
+    .cols rect:nth-child(2n) { fill: var(--coral); }
+    .cols rect:nth-child(3n) { fill: var(--signal); }
     .rail { stroke: var(--line); stroke-width: 3; fill: none; stroke-linecap: round; }
     .rail--flow { stroke: var(--accent); stroke-dasharray: 4 12; animation: flow 1.2s linear infinite; }
     .packet { fill: var(--signal); }
     .p1 { animation: drop1 3.2s ease-in-out infinite; }
     .p2 { animation: drop1 3.2s ease-in-out 1.6s infinite; }
-    .p3 { animation: drop2 3.2s ease-in-out infinite; }
-    .p4 { animation: drop2 3.2s ease-in-out 1.6s infinite; }
+    .p3 { fill: var(--coral); animation: drop2 3.2s ease-in-out infinite; }
+    .p4 { fill: var(--teal); animation: drop2 3.2s ease-in-out 1.6s infinite; }
     @keyframes flow { to { stroke-dashoffset: -16; } }
     @keyframes drop1 { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { transform: translateY(90px); opacity: 0; } }
     @keyframes drop2 { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { transform: translateY(90px); opacity: 0; } }

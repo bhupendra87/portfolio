@@ -35,6 +35,8 @@ import { EDUCATION, MILESTONES, SUMMARY } from '../data/portfolio.data';
     .miles { margin-top: 36px; display: grid; gap: 0; border-top: 1px solid var(--line); }
     .miles li { display: grid; grid-template-columns: 72px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
     .miles strong { font: 700 1.1rem var(--font-display); color: var(--accent); }
+    .miles li:nth-child(2) strong { color: var(--teal); }
+    .miles li:nth-child(3) strong { color: var(--coral); }
     .miles span { color: var(--muted); }
     .edu { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
     .edu h3 { font-size: 1.4rem; margin-bottom: 18px; }

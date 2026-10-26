@@ -52,7 +52,9 @@ import { EXPERIENCE, PROJECTS } from '../data/portfolio.data';
   `,
   styles: `
     .orgs { display: flex; flex-wrap: wrap; gap: 14px; margin: 32px 0 0; padding: 0; list-style: none; }
-    .org { padding: 18px 28px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); font: 700 1.25rem var(--font-display); letter-spacing: -.01em; }
+    .org { --c: var(--accent); border-left: 5px solid var(--c) !important; padding: 18px 28px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); font: 700 1.25rem var(--font-display); letter-spacing: -.01em; }
+    .org:nth-child(2) { --c: var(--teal); }
+    .org:nth-child(3) { --c: var(--coral); }
     .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
     .chip { font: 500 .95rem var(--font-body); padding: 8px 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; transition: background-color .15s, color .15s, border-color .15s; }
     .chip:hover { border-color: var(--accent); }
